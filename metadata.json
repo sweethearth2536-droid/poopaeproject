@@ -1,0 +1,6 @@
+{
+  "name": "ซีจี ซีเนียร์ แคร์",
+  "description": "ระบบดูแลผู้สูงอายุ (ซีจี ซีเนียร์ แคร์) - แดชบอร์ดผู้ดูแลสำหรับติดตามอาการ ตารางเวลาเตือนยา และข้อความติดต่อครอบครัว",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

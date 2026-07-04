@@ -1,0 +1,122 @@
+{
+  "entities": {
+    "patient": {
+      "title": "Patient",
+      "description": "Represents an elderly patient under care",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier for the patient" },
+        "name": { "type": "string", "description": "Full name of the patient" },
+        "age": { "type": "integer", "description": "Age of the patient" },
+        "gender": { "type": "string", "description": "Gender of the patient" },
+        "bloodType": { "type": "string", "description": "Blood type (e.g. O+, A-)" },
+        "heartRate": { "type": "integer", "description": "Current heart rate in bpm" },
+        "bloodPressure": { "type": "string", "description": "Current blood pressure in mmHg" },
+        "status": { "type": "string", "description": "Status of the patient: 'normal' or 'special_care'" },
+        "history": { "type": "string", "description": "Medical history summary" },
+        "specialCare": { "type": "string", "description": "Special care instructions" }
+      },
+      "required": ["id", "name", "age", "gender", "bloodType", "heartRate", "bloodPressure", "status"]
+    },
+    "note": {
+      "title": "Daily Note",
+      "description": "Daily care notes for a specific patient",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patientId": { "type": "string" },
+        "text": { "type": "string" },
+        "timeTag": { "type": "string", "description": "Time tag e.g. 'มื้อเช้า', 'มื้อเย็น'" },
+        "createdAt": { "type": "string" },
+        "caregiverName": { "type": "string" }
+      },
+      "required": ["id", "patientId", "text", "timeTag", "createdAt", "caregiverName"]
+    },
+    "medication": {
+      "title": "Medication",
+      "description": "A medication schedule reminder for a patient",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patientId": { "type": "string" },
+        "time": { "type": "string", "description": "Scheduled time (e.g. '08:00 น.')" },
+        "name": { "type": "string" },
+        "instructions": { "type": "string" },
+        "status": { "type": "string", "description": "Status: 'done', 'pending', 'later'" },
+        "givenBy": { "type": "string" },
+        "givenAt": { "type": "string" }
+      },
+      "required": ["id", "patientId", "time", "name", "instructions", "status"]
+    },
+    "schedule": {
+      "title": "Schedule",
+      "description": "A calendar appointment or reminder",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patientId": { "type": "string" },
+        "title": { "type": "string" },
+        "location": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "time": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "patientId", "title", "location", "date", "time"]
+    },
+    "message": {
+      "title": "Message",
+      "description": "Chat messages between caregiver and family",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderUid": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderAvatar": { "type": "string" },
+        "text": { "type": "string" },
+        "images": { "type": "string", "description": "Comma separated image URLs or structured" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "senderUid", "senderName", "text", "timestamp"]
+    },
+    "statusUpdate": {
+      "title": "Status Update",
+      "description": "Caregiver daily status updates posted to family feed",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "text": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "postedBy": { "type": "string" }
+      },
+      "required": ["id", "text", "createdAt", "postedBy"]
+    }
+  },
+  "firestore": {
+    "/patients/{patientId}": {
+      "schema": { "$ref": "#/entities/patient" },
+      "description": "Primary patient records"
+    },
+    "/patients/{patientId}/notes/{noteId}": {
+      "schema": { "$ref": "#/entities/note" },
+      "description": "Care notes for specific patient"
+    },
+    "/medications/{medicationId}": {
+      "schema": { "$ref": "#/entities/medication" },
+      "description": "Reminders for patient medications"
+    },
+    "/schedules/{scheduleId}": {
+      "schema": { "$ref": "#/entities/schedule" },
+      "description": "Schedules and appointments"
+    },
+    "/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/message" },
+      "description": "Chat messages"
+    },
+    "/statusUpdates/{statusUpdateId}": {
+      "schema": { "$ref": "#/entities/statusUpdate" },
+      "description": "Daily status updates feed"
+    }
+  }
+}
