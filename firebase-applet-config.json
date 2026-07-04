@@ -1,10 +1,10 @@
 {
-  "projectId": "poopae-project-2026",
-  "appId": "1:976837993217:web:fb99f7175147a9b848f100",
-  "apiKey": "AIzaSyDb8GllNp698lI9Z_bjNKi8DGhYTv9MjM8",
-  "authDomain": "poopae-project-2026.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-77172357-27ec-4c03-b4b6-4956758572f0",
-  "storageBucket": "poopae-project-2026.firebasestorage.app",
-  "messagingSenderId": "976837993217",
+  "projectId": "poopae2026",
+  "appId": "1:780971511644:web:3f0a8ca981bf493f047b99",
+  "apiKey": "AIzaSyBxPLgabln09je4gNr2VldiVAypX0bt1B8",
+  "authDomain": "poopae2026.firebaseapp.com",
+  "firestoreDatabaseId": "(default)",
+  "storageBucket": "poopae2026.firebasestorage.app",
+  "messagingSenderId": "780971511644",
   "measurementId": ""
 }
