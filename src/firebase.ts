@@ -1,18 +1,21 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import firebaseConfig from '../firebase-applet-config.json';
 
-// Initialize Firebase App
+const firebaseConfig = {
+  apiKey: "AIzaSyBxPLgabln09je4gNr2VldiVAypX0bt1B8",
+  authDomain: "poopae2026.firebaseapp.com",
+  projectId: "poopae2026",
+  storageBucket: "poopae2026.firebasestorage.app",
+  messagingSenderId: "780971511644",
+  appId: "1:780971511644:web:3f0a8ca981bf493f047b99"
+};
+
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firestore with Database ID from configuration
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
-
-// Initialize Auth
+export const db = getFirestore(app);
 export const auth = getAuth(app);
 
-// Authentication Helpers
 export const googleProvider = new GoogleAuthProvider();
 
 export function signInWithGoogle() {
@@ -23,7 +26,6 @@ export function logOut() {
   return signOut(auth);
 }
 
-// Error Handling helper as required by guidelines
 export enum OperationType {
   CREATE = 'create',
   UPDATE = 'update',
